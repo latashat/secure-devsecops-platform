@@ -106,7 +106,7 @@ Organizations may choose ECS when simplified container orchestration without Kub
 
 The system architecture diagram is located in the docs directory.
 
-docs/cicd-architecture-diagram.png
+docs/diagrams/ci-cd-okta-aws.pdf
 
 
 **CI/CD Pipeline Overview**
@@ -348,4 +348,3 @@ Merge into the main branch
 
 MIT License
 
->>>>>>> eed385d81331944cb3b0276657620867f141600e
