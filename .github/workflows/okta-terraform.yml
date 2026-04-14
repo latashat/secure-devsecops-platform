@@ -2,16 +2,16 @@ name: Okta Terraform Pipeline
 on:
  push:
    paths:
-     - "okta/**"
+     - "cicd/okta/**"
  pull_request:
    paths:
-     - "okta/**"
+     - "cicd/okta/**"
 jobs:
  terraform:
    runs-on: ubuntu-latest
    defaults:
      run:
-       working-directory: okta
+       working-directory: cicd/okta
    # Environment variables passed into Terraform
    env:
      # These values come from GitHub repository secrets
