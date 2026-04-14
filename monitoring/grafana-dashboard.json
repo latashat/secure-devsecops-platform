@@ -1,0 +1,53 @@
+{
+
+  "title": "Kubernetes Cluster Monitoring",
+
+  "tags": ["kubernetes", "devsecops"],
+
+  "timezone": "browser",
+
+  "panels": [
+
+    {
+
+      "type": "graph",
+
+      "title": "CPU Usage",
+
+      "targets": [
+
+        {
+
+          "expr": "sum(rate(container_cpu_usage_seconds_total[5m])) by (pod)"
+
+        }
+
+      ]
+
+    },
+
+    {
+
+      "type": "graph",
+
+      "title": "Memory Usage",
+
+      "targets": [
+
+        {
+
+          "expr": "sum(container_memory_usage_bytes) by (pod)"
+
+        }
+
+      ]
+
+    }
+
+  ],
+
+  "schemaVersion": 36,
+
+  "version": 1
+
+}
