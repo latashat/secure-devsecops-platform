@@ -1,0 +1,27 @@
+name: DevOps CI/CD Pipeline
+on:
+ push:
+   branches:
+     - main
+jobs:
+ build:
+   runs-on: ubuntu-latest
+   steps:
+     - name: Checkout code
+       uses: actions/checkout@v3
+     - name: Build Docker image
+       run: docker build -t devops-demo ./application
+ terraform:
+   runs-on: ubuntu-latest
+   steps:
+     - uses: actions/checkout@v3
+     - name: Terraform Init
+       run: terraform init ./terraform/environments/dev
+     - name: Terraform Validate
+       run: terraform validate ./terraform/environments/dev
+ deploy:
+   runs-on: ubuntu-latest
+   needs: [build, terraform]
+   steps:
+     - name: Deploy to Kubernetes
+       run: echo "Deploying application"
