@@ -12,20 +12,37 @@ This project demonstrates a best-practice cloud platform architecture integratin
 **Table of Contents**
 
 -Architecture Overview
+
 -Technology Stack
+
 -Container Orchestration Strategy (EKS Primary / ECS Alternative)
+
 -Architecture Diagram
+
 -CI/CD Pipeline Overview
+
 -Environment Promotion Flow
+
 -Infrastructure as Code
+
 -Terraform Remote State and State Locking
+
+-Okta Identity Management
+
 -Zero Trust Security Model
+
 -Deployment Strategy (Blue-Green / Canary)
+
 -Repository Structure
+
 -Security Controls
+
 -Monitoring and Observability
+
 -Getting Started
+
 -Contribution Workflow
+
 -License
 
 **Architecture Overview**
@@ -201,11 +218,13 @@ Versioned state files
 
 Restricted access policies
 
+
 ## Okta Identity Management
 
 Okta resources are managed via Terraform to ensure identity infrastructure is version controlled and auditable.
 
 Resources managed include:
+
 • Users
 
 • Groups
