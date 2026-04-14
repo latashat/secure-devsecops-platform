@@ -1,0 +1,40 @@
+name: Okta Terraform Pipeline
+on:
+ push:
+   paths:
+     - "okta/**"
+ pull_request:
+   paths:
+     - "okta/**"
+jobs:
+ terraform:
+   runs-on: ubuntu-latest
+   defaults:
+     run:
+       working-directory: okta
+   # Environment variables passed into Terraform
+   env:
+     # These values come from GitHub repository secrets
+     # Settings → Secrets → Actions
+     # Secret names in GitHub:
+     #   OKTA_API_TOKEN
+     #   OKTA_ORG_NAME
+     #
+     # Terraform automatically reads variables prefixed with TF_VAR_
+     TF_VAR_okta_api_token: ${{ secrets.OKTA_API_TOKEN }}
+     TF_VAR_okta_org_name: ${{ secrets.OKTA_ORG_NAME }}
+   steps:
+     - name: Checkout Repository
+       uses: actions/checkout@v3
+     - name: Setup Terraform
+       uses: hashicorp/setup-terraform@v2
+     # Initialize Terraform provider and modules
+     - name: Terraform Init
+       run: terraform init
+     # Show infrastructure changes before applying
+     - name: Terraform Plan
+       run: terraform plan
+     # Apply changes automatically when merged to main
+     - name: Terraform Apply
+       if: github.ref == 'refs/heads/main'
+       run: terraform apply -auto-approve

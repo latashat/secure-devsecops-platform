@@ -201,6 +201,21 @@ Versioned state files
 
 Restricted access policies
 
+## Okta Identity Management
+
+Okta resources are managed via Terraform to ensure identity infrastructure is version controlled and auditable.
+
+Resources managed include:
+• Users
+
+• Groups
+
+• Applications
+
+• MFA policies
+
+CI/CD pipelines automatically validate and apply Okta configuration changes.
+
 
 **Zero Trust Security Model**
 
